@@ -107,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       // TODO: Implement language change
                     },
                     itemBuilder: (BuildContext context) {
-                      return ['English', 'Spanish', 'French', 'German']
+                      return ['English', 'Malay']
                           .map((String choice) {
                         return PopupMenuItem<String>(
                           value: choice,
