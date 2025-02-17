@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:vgo_app/pages/login_page.dart';
 import 'package:vgo_app/pages/commerce_page.dart';
 import 'package:vgo_app/pages/transport_page.dart';
 import 'package:vgo_app/pages/government_page.dart';
 import 'package:vgo_app/pages/community_page.dart';
 import 'package:vgo_app/pages/profile_page.dart';
+import 'package:vgo_app/providers/theme_provider.dart';
 
 void main() {
-  runApp(const VGOApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const VGOApp(),
+    ),
+  );
 }
 
 class VGOApp extends StatelessWidget {
@@ -16,23 +23,41 @@ class VGOApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'V.GO - Local Community Services',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.green,
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-        textTheme: GoogleFonts.poppinsTextTheme(),
-      ),
-      home: const LoginPage(),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: 'VGO - Local Community Services',
+          themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.green,
+              brightness: Brightness.light,
+            ),
+            useMaterial3: true,
+            textTheme: GoogleFonts.poppinsTextTheme(),
+          ),
+          darkTheme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.green,
+              brightness: Brightness.dark,
+            ),
+            useMaterial3: true,
+            textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
+          ),
+          home: const LoginPage(),
+        );
+      },
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String userEmail;
+  
+  const HomePage({
+    super.key,
+    required this.userEmail,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -61,7 +86,9 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ProfilePage()),
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(userEmail: widget.userEmail),
+                ),
               );
             },
           ),

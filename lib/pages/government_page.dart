@@ -36,11 +36,17 @@ class GovernmentAndNGOPage extends StatelessWidget {
     String description,
     IconData icon,
   ) {
+    final colorScheme = Theme.of(context).colorScheme;
+    
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: ListTile(
         contentPadding: const EdgeInsets.all(16),
-        leading: Icon(icon, size: 48, color: Theme.of(context).primaryColor),
+        leading: Icon(
+          icon,
+          size: 48,
+          color: colorScheme.primary,
+        ),
         title: Text(
           title,
           style: Theme.of(context).textTheme.titleLarge,
@@ -50,7 +56,6 @@ class GovernmentAndNGOPage extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         onTap: () {
-          // TODO: Implement service details page
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Opening $title...')),
           );

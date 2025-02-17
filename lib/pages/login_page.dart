@@ -32,7 +32,9 @@ class _LoginPageState extends State<LoginPage> {
         if (mounted) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const HomePage()),
+            MaterialPageRoute(
+              builder: (context) => HomePage(userEmail: _emailController.text),
+            ),
           );
         }
       });

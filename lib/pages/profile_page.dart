@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vgo_app/pages/login_page.dart';
+import 'package:vgo_app/providers/theme_provider.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  final String userEmail;
+  
+  const ProfilePage({
+    super.key,
+    required this.userEmail,
+  });
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool _isDarkMode = false;
   bool _notificationsEnabled = true;
   String _selectedLanguage = 'English';
 
+  String get _userName => widget.userEmail.split('@')[0];
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile & Settings'),
@@ -27,30 +37,29 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 50,
-                  backgroundColor: Colors.green,
-                  child: Icon(Icons.person, size: 50, color: Colors.white),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  child: const Icon(Icons.person, size: 50, color: Colors.white),
                 ),
                 const SizedBox(height: 16),
-                const Text(
-                  'John Doe',
-                  style: TextStyle(
+                Text(
+                  _userName,
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Text(
-                  'john.doe@example.com',
+                Text(
+                  widget.userEmail,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey,
+                    color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                   ),
                 ),
                 const SizedBox(height: 16),
                 FilledButton(
                   onPressed: () {
-                    // TODO: Implement edit profile
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Edit profile coming soon!'),
@@ -69,10 +78,9 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Settings',
-                  style: TextStyle(
-                    fontSize: 20,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -80,11 +88,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 // Theme Switch
                 SwitchListTile(
                   title: const Text('Dark Mode'),
-                  subtitle: const Text('Toggle dark/light theme'),
-                  value: _isDarkMode,
+                  subtitle: Text(themeProvider.isDarkMode ? 'Dark theme enabled' : 'Light theme enabled'),
+                  value: themeProvider.isDarkMode,
                   onChanged: (value) {
-                    setState(() => _isDarkMode = value);
-                    // TODO: Implement theme switching
+                    themeProvider.toggleTheme();
                   },
                 ),
                 // Notifications Switch
@@ -94,7 +101,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   value: _notificationsEnabled,
                   onChanged: (value) {
                     setState(() => _notificationsEnabled = value);
-                    // TODO: Implement notifications toggle
                   },
                 ),
                 // Language Dropdown
@@ -104,7 +110,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   trailing: PopupMenuButton<String>(
                     onSelected: (String value) {
                       setState(() => _selectedLanguage = value);
-                      // TODO: Implement language change
                     },
                     itemBuilder: (BuildContext context) {
                       return ['English', 'Malay']
@@ -122,7 +127,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   title: const Text('Privacy Policy'),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                   onTap: () {
-                    // TODO: Implement privacy policy view
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Privacy Policy coming soon!'),
@@ -135,7 +139,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   title: const Text('Terms of Service'),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                   onTap: () {
-                    // TODO: Implement terms of service view
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Terms of Service coming soon!'),
