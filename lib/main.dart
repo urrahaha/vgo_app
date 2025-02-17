@@ -17,7 +17,7 @@ class VGOApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'VGO - Local Community Services',
+      title: 'V.GO - Local Community Services',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.green,
@@ -52,19 +52,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('VGO'),
+        title: const Text('V.GO'),
         centerTitle: true,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
-              );
-            },
-          ),
           IconButton(
             icon: const Icon(Icons.person),
             onPressed: () {
