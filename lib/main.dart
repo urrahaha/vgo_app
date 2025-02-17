@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vgo_app/pages/login_page.dart';
 import 'package:vgo_app/pages/commerce_page.dart';
-import 'package:vgo_app/pages/community_page.dart';
-import 'package:vgo_app/pages/government_page.dart';
 import 'package:vgo_app/pages/transport_page.dart';
+import 'package:vgo_app/pages/government_page.dart';
+import 'package:vgo_app/pages/community_page.dart';
 
 void main() {
   runApp(const VGOApp());
@@ -24,10 +25,12 @@ class VGOApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }
+
+export 'package:vgo_app/pages/home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -50,9 +53,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('V.GO'),
+        title: const Text('VGO'),
         centerTitle: true,
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: NavigationBar(
