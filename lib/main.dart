@@ -5,6 +5,7 @@ import 'package:vgo_app/pages/commerce_page.dart';
 import 'package:vgo_app/pages/transport_page.dart';
 import 'package:vgo_app/pages/government_page.dart';
 import 'package:vgo_app/pages/community_page.dart';
+import 'package:vgo_app/pages/profile_page.dart';
 
 void main() {
   runApp(const VGOApp());
@@ -29,8 +30,6 @@ class VGOApp extends StatelessWidget {
     );
   }
 }
-
-export 'package:vgo_app/pages/home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -63,6 +62,15 @@ class _HomePageState extends State<HomePage> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
               );
             },
           ),

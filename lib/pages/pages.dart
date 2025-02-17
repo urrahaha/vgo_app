@@ -3,3 +3,4 @@ export 'commerce_page.dart';
 export 'transport_page.dart';
 export 'government_page.dart';
 export 'community_page.dart';
+export 'profile_page.dart';
