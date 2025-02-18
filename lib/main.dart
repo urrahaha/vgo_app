@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ import 'package:vgo_app/pages/profile_page.dart';
 import 'package:vgo_app/providers/theme_provider.dart';
 
 void main() {
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),
@@ -120,6 +122,17 @@ class _HomePageState extends State<HomePage> {
             label: 'Community',
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Opening emergency services...')),
+          );
+        },
+        tooltip: 'Open emergency services',
+          child: LayoutBuilder(builder: (context, constraint) {
+            return Icon(CupertinoIcons.exclamationmark, size: constraint.biggest.height * 0.6);
+          }),
       ),
     );
   }

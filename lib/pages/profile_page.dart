@@ -54,7 +54,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   widget.userEmail,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                    color: Theme.of(context).textTheme.bodyMedium?.color?.withValues(alpha: 0.6),
                   ),
                 ),
                 const SizedBox(height: 16),

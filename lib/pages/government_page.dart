@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GovernmentAndNGOPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class GovernmentAndNGOPage extends StatelessWidget {
           context,
           'Emergency Services',
           'Contact local emergency services',
-          Icons.emergency,
+          CupertinoIcons.exclamationmark_circle,
         ),
       ],
     );
