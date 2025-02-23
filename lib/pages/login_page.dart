@@ -54,10 +54,21 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Icon(
-                    Icons.location_city_rounded,
-                    size: 80,
-                    color: Colors.green,
+                  Container(
+                    width: 192,
+                    height: 192,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.primary,
+                        width: 2,
+                      ),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/logo.jpeg'),
+                        fit: BoxFit.contain,
+                        scale: 0.8,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 24),
                   Text(

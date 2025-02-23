@@ -29,12 +29,12 @@ class _MarketplacePageState extends State<MarketplacePage> {
           _selectedCategory == 'All' || item.category == _selectedCategory;
       final matchesSearch =
           _searchController.text.isEmpty ||
-          item.title.toLowerCase().contains(
-            _searchController.text.toLowerCase(),
-          ) ||
-          item.description.toLowerCase().contains(
-            _searchController.text.toLowerCase(),
-          );
+              item.title.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              ) ||
+              item.description.toLowerCase().contains(
+                _searchController.text.toLowerCase(),
+              );
       return matchesCategory && matchesSearch;
     }).toList();
   }
@@ -98,7 +98,10 @@ class _MarketplacePageState extends State<MarketplacePage> {
                   children: [
                     Text(
                       'Live Product Promotions',
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .titleMedium,
                     ),
                     const SizedBox(width: 8),
                     Container(
@@ -107,13 +110,23 @@ class _MarketplacePageState extends State<MarketplacePage> {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme
+                            .of(context)
+                            .colorScheme
+                            .primary,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
                         'LIVE',
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .labelSmall
+                            ?.copyWith(
+                          color: Theme
+                              .of(context)
+                              .colorScheme
+                              .onPrimary,
                         ),
                       ),
                     ),
@@ -169,9 +182,12 @@ class _MarketplacePageState extends State<MarketplacePage> {
                                     height: 120,
                                     decoration: BoxDecoration(
                                       color:
-                                          Theme.of(
-                                            context,
-                                          ).colorScheme.primaryContainer,
+                                      Theme
+                                          .of(
+                                        context,
+                                      )
+                                          .colorScheme
+                                          .primaryContainer,
                                       borderRadius: const BorderRadius.vertical(
                                         top: Radius.circular(12),
                                       ),
@@ -183,9 +199,12 @@ class _MarketplacePageState extends State<MarketplacePage> {
                                             Icons.play_circle,
                                             size: 48,
                                             color:
-                                                Theme.of(
-                                                  context,
-                                                ).colorScheme.primary,
+                                            Theme
+                                                .of(
+                                              context,
+                                            )
+                                                .colorScheme
+                                                .primary,
                                           ),
                                         ),
                                         Positioned(
@@ -199,7 +218,7 @@ class _MarketplacePageState extends State<MarketplacePage> {
                                             decoration: BoxDecoration(
                                               color: Colors.red,
                                               borderRadius:
-                                                  BorderRadius.circular(12),
+                                              BorderRadius.circular(12),
                                             ),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
@@ -231,14 +250,17 @@ class _MarketplacePageState extends State<MarketplacePage> {
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           channel.title,
                                           style:
-                                              Theme.of(
-                                                context,
-                                              ).textTheme.titleMedium,
+                                          Theme
+                                              .of(
+                                            context,
+                                          )
+                                              .textTheme
+                                              .titleMedium,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
@@ -246,20 +268,33 @@ class _MarketplacePageState extends State<MarketplacePage> {
                                         Text(
                                           channel.sellerName,
                                           style:
-                                              Theme.of(
-                                                context,
-                                              ).textTheme.bodyMedium,
+                                          Theme
+                                              .of(
+                                            context,
+                                          )
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
-                                          'Promoting: ${channel.promotedItemName} - \$${channel.promotedItemPrice.toStringAsFixed(2)}',
-                                          style: Theme.of(
+                                          'Promoting: ${channel
+                                              .promotedItemName} - \$${channel
+                                              .promotedItemPrice
+                                              .toStringAsFixed(2)}',
+                                          style: Theme
+                                              .of(
                                             context,
-                                          ).textTheme.bodySmall?.copyWith(
+                                          )
+                                              .textTheme
+                                              .bodySmall
+                                              ?.copyWith(
                                             color:
-                                                Theme.of(
-                                                  context,
-                                                ).colorScheme.primary,
+                                            Theme
+                                                .of(
+                                              context,
+                                            )
+                                                .colorScheme
+                                                .primary,
                                           ),
                                         ),
                                       ],
@@ -299,15 +334,21 @@ class _MarketplacePageState extends State<MarketplacePage> {
                             height: 100,
                             decoration: BoxDecoration(
                               color:
-                                  Theme.of(
-                                    context,
-                                  ).colorScheme.primaryContainer,
+                              Theme
+                                  .of(
+                                context,
+                              )
+                                  .colorScheme
+                                  .primaryContainer,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Icon(
                               Icons.image,
                               size: 40,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: Theme
+                                  .of(context)
+                                  .colorScheme
+                                  .primary,
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -319,28 +360,44 @@ class _MarketplacePageState extends State<MarketplacePage> {
                                 Text(
                                   item.title,
                                   style:
-                                      Theme.of(context).textTheme.titleMedium,
+                                  Theme
+                                      .of(context)
+                                      .textTheme
+                                      .titleMedium,
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   '\$${item.price.toStringAsFixed(2)}',
-                                  style: Theme.of(
+                                  style: Theme
+                                      .of(
                                     context,
-                                  ).textTheme.titleLarge?.copyWith(
+                                  )
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
                                     color:
-                                        Theme.of(context).colorScheme.primary,
+                                    Theme
+                                        .of(context)
+                                        .colorScheme
+                                        .primary,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   item.location,
-                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyMedium,
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   _getTimeAgo(item.postedDate),
-                                  style: Theme.of(context).textTheme.bodySmall,
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodySmall,
                                 ),
                               ],
                             ),
@@ -384,7 +441,7 @@ class _MarketplacePageState extends State<MarketplacePage> {
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Livestream feature coming soon!'),
+                            content: Text('Post item feature coming soon!'),
                           ),
                         );
                       },
@@ -420,14 +477,19 @@ class _MarketplacePageState extends State<MarketplacePage> {
       context: context,
       isScrollControlled: true,
       builder:
-          (context) => DraggableScrollableSheet(
+          (context) =>
+          DraggableScrollableSheet(
             initialChildSize: 0.9,
             maxChildSize: 0.9,
             minChildSize: 0.5,
             builder:
-                (context, scrollController) => Container(
+                (context, scrollController) =>
+                Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
+                    color: Theme
+                        .of(context)
+                        .colorScheme
+                        .surface,
                     borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
@@ -440,13 +502,19 @@ class _MarketplacePageState extends State<MarketplacePage> {
                       Container(
                         height: 200,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primaryContainer,
+                          color: Theme
+                              .of(context)
+                              .colorScheme
+                              .primaryContainer,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Icon(
                           Icons.image,
                           size: 64,
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme
+                              .of(context)
+                              .colorScheme
+                              .primary,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -458,15 +526,25 @@ class _MarketplacePageState extends State<MarketplacePage> {
                           Expanded(
                             child: Text(
                               item.title,
-                              style: Theme.of(context).textTheme.headlineSmall,
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .headlineSmall,
                             ),
                           ),
                           Text(
                             '\$${item.price.toStringAsFixed(2)}',
-                            style: Theme.of(
+                            style: Theme
+                                .of(
                               context,
-                            ).textTheme.headlineSmall?.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
+                            )
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(
+                              color: Theme
+                                  .of(context)
+                                  .colorScheme
+                                  .primary,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -479,7 +557,10 @@ class _MarketplacePageState extends State<MarketplacePage> {
                           Icon(
                             Icons.location_on,
                             size: 16,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme
+                                .of(context)
+                                .colorScheme
+                                .primary,
                           ),
                           const SizedBox(width: 4),
                           Text(item.location),
@@ -487,7 +568,10 @@ class _MarketplacePageState extends State<MarketplacePage> {
                           Icon(
                             Icons.category,
                             size: 16,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme
+                                .of(context)
+                                .colorScheme
+                                .primary,
                           ),
                           const SizedBox(width: 4),
                           Text(item.category),
@@ -497,25 +581,37 @@ class _MarketplacePageState extends State<MarketplacePage> {
                       // Description
                       Text(
                         'Description',
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .titleMedium,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         item.description,
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .bodyMedium,
                       ),
                       const SizedBox(height: 24),
                       // Seller Info
                       Text(
                         'Seller Information',
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .titleMedium,
                       ),
                       const SizedBox(height: 8),
                       Row(
                         children: [
                           CircleAvatar(
                             backgroundColor:
-                                Theme.of(context).colorScheme.primary,
+                            Theme
+                                .of(context)
+                                .colorScheme
+                                .primary,
                             child: const Icon(
                               Icons.person,
                               color: Colors.white,
@@ -527,11 +623,17 @@ class _MarketplacePageState extends State<MarketplacePage> {
                             children: [
                               Text(
                                 item.seller,
-                                style: Theme.of(context).textTheme.titleSmall,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .titleSmall,
                               ),
                               Text(
                                 'Member since Jan 2025',
-                                style: Theme.of(context).textTheme.bodySmall,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .bodySmall,
                               ),
                             ],
                           ),

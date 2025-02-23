@@ -79,6 +79,30 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(14.0, 0.0, 0.0, 0.0),
+          child: SizedBox(
+            width: 32,
+            height: 32,
+            child: ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Opening emergency services...')),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.zero,
+                backgroundColor: Colors.red,
+                shape: const CircleBorder(),
+              ),
+              child: const Icon(
+                CupertinoIcons.exclamationmark,
+                color: Colors.white,
+                size: 16,
+              ),
+            ),
+          ),
+        ),
         title: const Text('V.GO'),
         centerTitle: true,
         elevation: 0,
@@ -122,17 +146,6 @@ class _HomePageState extends State<HomePage> {
             label: 'Community',
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Opening emergency services...')),
-          );
-        },
-        tooltip: 'Open emergency services',
-          child: LayoutBuilder(builder: (context, constraint) {
-            return Icon(CupertinoIcons.exclamationmark, size: constraint.biggest.height * 0.6);
-          }),
       ),
     );
   }
