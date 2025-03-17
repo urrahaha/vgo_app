@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                         width: 2,
                       ),
                       image: const DecorationImage(
-                        image: AssetImage('assets/logo.jpeg'),
+                        image: AssetImage('assets/vgo_logo.png'),
                         fit: BoxFit.contain,
                         scale: 0.8,
                       ),
