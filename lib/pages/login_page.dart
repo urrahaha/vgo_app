@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import '../main.dart';
 
@@ -39,6 +40,23 @@ class _LoginPageState extends State<LoginPage> {
         }
       });
     }
+  }
+
+  void _handleDebugLogin() {
+    setState(() => _isLoading = true);
+    
+    // Quick login without validation for debug mode
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() => _isLoading = false);
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(userEmail: 'debug@example.com'),
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -137,6 +155,18 @@ class _LoginPageState extends State<LoginPage> {
                           : const Text('Login'),
                     ),
                   ),
+                  // Debug login button - only visible in debug mode
+                  if (kDebugMode) ...[
+                    const SizedBox(height: 12),
+                    OutlinedButton.icon(
+                      onPressed: _isLoading ? null : _handleDebugLogin,
+                      icon: const Icon(Icons.bug_report),
+                      label: const Text('Debug Login (Skip Validation)'),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.all(16),
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: 16),
                   TextButton(
                     onPressed: () {
