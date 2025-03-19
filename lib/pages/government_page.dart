@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'public_services_page.dart';
+import 'community_programs_page.dart';
 
 class GovernmentAndNGOPage extends StatelessWidget {
   const GovernmentAndNGOPage({super.key});
@@ -14,12 +16,24 @@ class GovernmentAndNGOPage extends StatelessWidget {
           'Public Services',
           'Access local government services and information',
           Icons.account_balance,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PublicServicesPage()),
+            );
+          },
         ),
         _buildServiceCard(
           context,
           'Community Programs',
           'NGO and government-sponsored programs',
           Icons.group_work,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CommunityProgramsPage()),
+            );
+          },
         ),
         _buildServiceCard(
           context,
@@ -35,8 +49,9 @@ class GovernmentAndNGOPage extends StatelessWidget {
     BuildContext context,
     String title,
     String description,
-    IconData icon,
-  ) {
+    IconData icon, {
+    VoidCallback? onTap,
+  }) {
     final colorScheme = Theme.of(context).colorScheme;
     
     return Card(
@@ -56,7 +71,7 @@ class GovernmentAndNGOPage extends StatelessWidget {
           description,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        onTap: () {
+        onTap: onTap ?? () {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Opening $title...')),
           );
